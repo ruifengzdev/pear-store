@@ -6,17 +6,17 @@ export default {
         {
           title: '平泽唯',
           showDropdown: false,
-          submenus: ['Submenu 1', 'Submenu 2', 'Submenu 3']
+          submenus: ['下意识吉他手', '平地摔拿手', '团队吐槽役2号']
         },
         {
           title: '相生祐子',
           showDropdown: false,
-          submenus: ['Submenu A', 'Submenu B']
+          submenus: ['狗头人', '运动万能', '数学无能']
         },
         {
           title: '英梨梨',
           showDropdown: false,
-          submenus: ['Submenu X', 'Submenu Y', 'Submenu Z']
+          submenus: ['败犬', '最强插话家', '黄毛长直也算长直']
         }
       ]
     };
@@ -40,75 +40,119 @@ export default {
 };
 </script>
 <template>
-<div class="outterBar">
-    <ul class="innerBar">
-      <li class="col"><img class="col" src="https://cdn-image2.ruifeng.me/xiandehuang%2F2018new_doge02_org.png" width="14px"></li>
+<div class="nav-container">
+    <div class="nav-bar">
+      <div class="nav-logo">
+        <img src="https://cdn-image2.ruifeng.me/xiandehuang%2F2018new_doge02_org.png" width="14px">
+      </div>
 
-      <li
+      <div 
         v-for="(item, index) in navItems" 
         :key="index"
-        @mouseover="showDropdown(index)"
+        @mouseenter="showDropdown(index)"
         @mouseleave="hideDropdown"
-        class="col"
+        class="nav-item"
       >
-        {{ item.title }}
-        <div v-if="item.showDropdown" class="dropdown">
-          <ul>
-            <li v-for="(submenu, subIndex) in item.submenus" :key="subIndex">{{ submenu }}</li>
-          </ul>
+        <span>{{ item.title }}</span>
+        <div v-if="item.showDropdown" class="dropdown-container">
+          <div class="dropdown-content">
+            <div v-for="(submenu, subIndex) in item.submenus" :key="subIndex" class="dropdown-item">{{ submenu }}</div>
+          </div>
         </div>
-      </li>
-      <li class="col"><img src="https://cdn-image2.ruifeng.me/xiandehuang%2Ffangdajing.png" width="14px"></li>
-      <li class="col"><img src="https://cdn-image2.ruifeng.me/xiandehuang%2Fbag.png" width="14px"></li>
-    </ul>
-</div>
+      </div>
 
+      <div class="nav-icons">
+        <img src="/magnifying-glass-solid-full.svg" width="14px">
+        <img src="/bag-shopping-solid-full.svg" width="14px">
+      </div>
+    </div>
+</div>
 </template>
 <style>
-    .innerBar {
-      display: grid;
-      grid-template-columns: repeat(13, 1fr);
-      grid-gap: 10px;
-      background-color: rgb(20, 19, 19);
-      width: 75%;
-    }
-
-    .col {
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-    .outterBar {
-        display: grid;
-        place-items: center; /* 水平和垂直居中 */
-        background-color: rgb(20, 19, 19);
-        color: gray;
-        font-size: 9pt;
-        position: relative;
-    }
-
-
-
-    .navbar {
+.nav-container {
+  width: 100%;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
   position: relative;
+  z-index: 9999;
 }
 
-ul {
-  list-style-type: none;
+.nav-bar {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  height: 44px;
 }
 
-.dropdown {
-  position: absolute;
-  top: 100%;
+.nav-item {
+  position: relative;
+  margin: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-item span {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.nav-item:hover span {
+  opacity: 1;
+}
+
+.dropdown-container {
+  position: fixed;
+  top: 44px;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  display: none;
+  right: 0;
+  width: 100%;
+  color: #000;
+  background-color: white;
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-li:hover .dropdown {
-  display: block;
+.nav-item:hover .dropdown-container {
+  max-height: 500px;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dropdown-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item {
+  padding: 8px 0;
+  opacity: 0.8;
+}
+
+.dropdown-item:hover {
+  opacity: 1;
+}
+
+.nav-logo, .nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icons {
+  margin-left: auto;
+}
+
+.nav-icons img {
+  margin-left: 20px;
 }
 </style>

@@ -28,7 +28,6 @@ defineProps({
 <style>
     .homepageFigure {
         width: 100%;
-        background: black;
         color: white;
         margin: 0;
         display: grid;
