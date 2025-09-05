@@ -42,7 +42,7 @@ export default {
 <template>
 <div class="outterBar">
     <ul class="innerBar">
-      <li class="col"><img class="col" src="https://cdn-image2.fengrin.me/xiandehuang%2F2018new_doge02_org.png" width="14px"></li>
+      <li class="col"><img class="col" src="https://cdn-image2.ruifeng.me/xiandehuang%2F2018new_doge02_org.png" width="14px"></li>
 
       <li
         v-for="(item, index) in navItems" 
@@ -58,8 +58,8 @@ export default {
           </ul>
         </div>
       </li>
-      <li class="col"><img src="https://cdn-image2.fengrin.me/xiandehuang%2Ffangdajing.png" width="14px"></li>
-      <li class="col"><img src="https://cdn-image2.fengrin.me/xiandehuang%2Fbag.png" width="14px"></li>
+      <li class="col"><img src="https://cdn-image2.ruifeng.me/xiandehuang%2Ffangdajing.png" width="14px"></li>
+      <li class="col"><img src="https://cdn-image2.ruifeng.me/xiandehuang%2Fbag.png" width="14px"></li>
     </ul>
 </div>
 
